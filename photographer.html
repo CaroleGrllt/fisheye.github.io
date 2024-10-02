@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <title>Fisheye - photographe </title>
+  </head>
+  <body id="body">
+    <header class="main-header" role="banner" aria-label="En-tête de la page">
+      <a aria-label="Lien vers la page d'accueil" href="./index.html" >
+        <img role="img" src="assets/icons/logo.png" class="logo" alt="Fisheye Home Page"/>
+      </a>
+    </header>
+
+    <main id="main-photographer" aria-hidden="false" class="photographer-container">
+      <section class="about-container"></section>
+      <section class="filter">
+        <h2 class="filter-title">Trier par</h2>
+        <div class="dropdown-container">
+          <div class="dropdown-main-menu">
+            <button id="trier" 
+                    class="dropdown-button current-filter" 
+                    role="button" 
+                    aria-haspopup="listbox" 
+                    aria-expanded="false" 
+                    aria-controls="filter options" 
+                    aria-label="trier par"
+                    value="popularite">
+              Popularité
+            </button>
+            <div class="dropdown-content" aria-hidden="true">
+              <ul aria-hidden="true">
+                <li class="option" role="listbox">
+                  <button class="filter-button" id="popularite" type="button" aria-label="Trier par popularité" value="popularite">Popularité</button>
+                </li>
+                <li class="option" role="listbox">
+                  <button class="filter-button" id="date" type="button" aria-label="Trier par date" value="date">Date</button>
+                </li>
+                <li class="option" role="listbox">
+                  <button class="filter-button" id="titre" type="button"  aria-label="Trier par titre" value="titre">Titre</button>
+                </li>
+              </ul>
+            </div>
+            <span class="fa-solid fa-chevron-down" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+      <section class="works-container"></section>
+    </main>
+
+    <div id="contact_modal" aria-hidden="true" aria-modal="false" role="dialog" aria-describedby="modalTitle">
+			<div class="modal">
+				<header class="modal-header">
+          <h2 id="modalTitle" class="modal-title">Contactez-moi <br> <span aria-label="Nom du photographe" class="form-name"></span></h2>
+          <button class="close-modal" aria-label="Fermer la modale de contact">
+            <img alt="fermer la modale" aria-hidden="true" src="assets/icons/close.svg" onclick="closeModal()" />
+          </button>
+        </header>
+        <form name="contact" action="index.html" method="get" onsubmit="return validate();">
+
+          <div class="formData firstname" data-error="Entrez votre prénom" data-error-visible="false">
+            <label for="firstname">Prénom</label><br>
+            <input class="text-control" type="text" id="firstname" name="firstname">
+          </div>
+
+          <div class="formData lastname" data-error="Entrez votre nom de famille" data-error-visible="false">
+            <label for="lastname">Nom</label><br>
+            <input class="text-control" type="text" id="lastname" name="lastname">
+          </div>
+
+          <div class="formData email" data-error="Entrez une adresse email valide" data-error-visible="false">
+            <label for="email">E-mail</label><br>
+            <input class="text-control" type="email" id="email" name="email">
+          </div>
+
+          <div class="formData message" data-error="Entrez votre message" data-error-visible="false">
+            <label for="message">Votre message</label><br>
+            <textarea class="text-control" id="message" name="message" rows="10"></textarea>
+          </div>
+
+          <input class="btn-submit button" type="submit" value="Envoyer">
+          <div class="success"></div>
+        </form>
+      </div>
+		</div>
+
+    <div class="lightbox" aria-hidden="true" aria-modal="false" role="dialog" aria-label="vue rapprochée de l'image">
+      <div class="lightbox-container">
+        <button class="close-lightbox" role="button" aria-label="fermer la vue">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <button class="previous-button" role="link" aria-label="Voir l'image précédente">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <div class="photo-container">
+          <figure></figure>
+          <figcaption></figcaption>
+        </div>
+        <button class="next-button" role="link" aria-label="Voir l'image suivante">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="/scripts/pages/photographer.js" type="module"></script>
+    <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/likes.js" type="module"></script>
+    <script src="/scripts/utils/filter.js" type="module"></script>
+  </body>
+</html>
